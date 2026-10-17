@@ -1,0 +1,13 @@
+{
+  "name": "vibe-coding",
+  "description": "Vibe-Coding-Plugin: von der Idee zum produktionsreifen Prototyp",
+  "owner": {
+    "name": "Detlef Hoefer"
+  },
+  "plugins": [
+    {
+      "name": "vibe",
+      "source": "./vibe"
+    }
+  ]
+}
