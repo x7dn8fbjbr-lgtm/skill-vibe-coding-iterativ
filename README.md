@@ -34,16 +34,17 @@ In der Desktop-App: **+** neben dem Eingabefeld → Plugins → Add marketplace 
 
 Ist das Repository privat, braucht der Rechner einen Git-Zugang zu GitHub (z. B. `gh auth login` und danach `gh auth setup-git`).
 
-**In Cloud-Sitzungen (claude.ai/code):** In das jeweilige Projekt-Repository eine `.claude/settings.json` legen:
+**In Cloud-Sitzungen (claude.ai/code):** Cloud-Sitzungen installieren keine Plugins aus der `.claude/settings.json` eines Repositorys. Diesen Weg gibt Claude Code dort nicht her. Stattdessen installierst du das Plugin einmalig über das **Setup-Skript der Cloud-Umgebung**. Dann ist es in jeder neuen Sitzung dieser Umgebung da, egal mit welchem Repository:
 
-```json
-{
-  "extraKnownMarketplaces": {
-    "vibe-coding": { "source": { "source": "github", "repo": "x7dn8fbjbr-lgtm/skill-vibe-coding-iterativ" } }
-  },
-  "enabledPlugins": { "vibe@vibe-coding": true }
-}
-```
+1. In einer Sitzung oben in der Titelleiste auf den Namen der Cloud-Umgebung klicken, dann **Edit**.
+2. Unter **Setup script** diese zwei Zeilen ergänzen:
+   ```bash
+   claude plugin marketplace add x7dn8fbjbr-lgtm/skill-vibe-coding-iterativ
+   claude plugin install vibe@vibe-coding
+   ```
+3. Speichern und eine **neue** Sitzung starten. Bereits laufende Sitzungen bekommen das Plugin nicht.
+
+Der Netzwerkzugriff der Umgebung muss GitHub erlauben (beim Standard „Trusted“ ist das so). Die Befehle erscheinen dann mit Präfix, zum Beispiel `/vibe:idee`.
 
 ## Benutzung
 
