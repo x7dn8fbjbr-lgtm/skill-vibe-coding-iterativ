@@ -1,0 +1,7 @@
+{
+  "name": "vibe",
+  "version": "0.1.0",
+  "description": "Vibe-Coding von der Idee bis zum Release: schneller Prototyp, Feedback-Schleifen, automatische Checkpoints und Fortschrittsanzeige.",
+  "author": { "name": "Detlef Hoefer" },
+  "types": "./types/index.d.ts"
+}
