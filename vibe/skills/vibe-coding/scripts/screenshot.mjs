@@ -71,8 +71,10 @@ for (const name of names) {
   await page.waitForTimeout(400)
   const file = resolve(outDir, `${name}.png`)
   await page.screenshot({ path: file, fullPage: true })
+  // Mobile Browser zoomen eine zu breite Seite heraus: deshalb gegen die gewollte Breite prüfen.
   const hasSideScroll = await page.evaluate(
-    () => document.documentElement.scrollWidth > window.innerWidth + 1,
+    width => document.documentElement.scrollWidth > width + 1,
+    VIEWPORTS[name].viewport.width,
   )
   if (hasSideScroll) problems.push(`${name}: Seite scrollt seitlich (zu breit)`)
   console.log(file)
